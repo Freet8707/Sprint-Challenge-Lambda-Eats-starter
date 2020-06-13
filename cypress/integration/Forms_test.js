@@ -1,0 +1,21 @@
+describe('testing form inputs', function(){
+    beforeEach(() => {
+        cy.visit('http://localhost:3000/pizza')
+    })
+    it("writes within form inputs and selects a value in checkboxes", function(){
+       cy.get("[data-cy=name]")
+       .type("Jeremy")
+       .should("have.value", "Jeremy")
+       cy.get("[data-cy=size]")
+       .select("Medium")
+       .should("have.value", "medium")
+       cy.get("[data-cy=pepperoni]")
+       .check()
+       .should("be.checked")
+       cy.get("[data-cy=special]")
+       .type("Thank You!")
+       .should("have.value", "Thank You!")
+       cy.get("[data-cy=submit]")
+       .click()
+    })
+})
