@@ -4,11 +4,16 @@ import * as yup from 'yup'
 import axios from 'axios'
 
 const FlexDiv = styled.div`
-    margin-left: 20px;
+    max-width: 500px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 20px;
     display: flex;
+    font-size: 1.6rem;
     flex-direction: column;
     justify-content: space-evenly;
     align-items: flex-start;
+    background: rgba(29, 179, 134, .5);
     label {
         margin-top: 10px;
     }
@@ -112,8 +117,8 @@ function OrderForm(){
     return (
         <>
             <form onSubmit={submitForm}>
-                <h2 style={{textAlign: 'center'}}>Lambda Eats Order Form</h2>
                 <FlexDiv>
+                    <h2 style={{alignSelf: 'center'}}>Lambda Eats Order Form</h2>
                     <label htmlFor='name'><span>Name: </span>
                         <input type='text' data-cy='name' id='name' name='name' placeholder='Enter Your Name' value={order.name} onChange={handleChange} />
                         <p className='error'>{errors.name.length > 0 ? errors.name : null}</p>
@@ -129,8 +134,9 @@ function OrderForm(){
                         <p className='error'>{errors.size.length > 0 ? errors.size : null}</p>
                     </label>
                 </FlexDiv>
-                <h3>Choose Your Toppings!</h3>
+                
                 <FlexDiv>
+                    <h2>Choose Your Toppings!</h2>
                     <label htmlFor='xtraCheese'>
                         <input type='checkbox' name='xtraCheese' id='xtraCheese' checked={order.xtraCheese} onChange={handleToppings}/><span>Extra Cheese</span>
                     </label>
@@ -143,11 +149,11 @@ function OrderForm(){
                     <label htmlFor='supreme'>
                         <input type='checkbox' name='supreme' id='supreme' checked={order.supreme} onChange={handleToppings} /><span>Supreme</span>
                     </label>
-                </FlexDiv>
-                <label htmlFor='special' style={{margin: '0 0 0 20px'}}>
-                    <textarea data-cy='special' style={{marginTop: '20px', width: '400px', height: '50px'}}id='special' name='special' placeholder='Enter Any Special Instructions' value={order.special} onChange={handleChange} />
-                </label><br />
+                    <label htmlFor='special' >
+                        <textarea style={{height: '50px', padding: '5px', minWidth: '400px'}} id='special' name='special' data-cy='special' placeholder='Enter any Special Instructions' onChange={handleChange} />
+                    </label><br />
                 <button data-cy='submit' type='submit' style={{marginLeft: '20px'}} disabled={buttonDisabled}>Submit Order</button>
+                </FlexDiv>
             </form>
             <pre>{JSON.stringify(post, null, 2)}</pre>
         </>

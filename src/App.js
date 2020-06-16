@@ -30,7 +30,7 @@ const App = () => {
   return (
     <>
       <HeaderNav>
-        <h1>Lambda Eats</h1>
+        <h1 className='navHeader'>Lambda Eats</h1>
         <div>
           <Link to='/'><button>Home</button></Link>
           <Link to='/pizza'><button>Order a Pizza</button></Link>
