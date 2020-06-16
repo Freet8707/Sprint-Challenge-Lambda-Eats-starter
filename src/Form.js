@@ -50,6 +50,10 @@ function OrderForm(){
         })
     }, [order])
 
+    useEffect(() => {
+        console.log(post)
+    }, [post])
+
     const validateChange = e => {
         yup.reach(schema, e.target.name)
         .validate(e.target.value)
